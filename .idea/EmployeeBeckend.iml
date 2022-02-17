@@ -104,6 +104,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nacmartin/phpexecjs" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/limenius/react-renderer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/limenius/react-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/doctrine-messenger" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
