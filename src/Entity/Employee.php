@@ -12,15 +12,15 @@ class Employee
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
-    
-    #[ORM\Column(type: 'string', length: 255)]
-    private  $fname;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private  $lname;
+    private $fname;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private  $position;
+    private $lname;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $position;
 
     public function getId(): ?int
     {

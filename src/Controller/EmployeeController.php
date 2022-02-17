@@ -5,16 +5,15 @@ namespace App\Controller;
 use App\Entity\Employee;
 use App\Repository\EmployeeRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Config\Doctrine\Orm\EntityManagerConfig;
 
 #[Route('/api/employee', name: 'api_employee')]
 class EmployeeController extends AbstractController
 {
+  
   private $employeeRepository;
   private $entityManager;
   
@@ -40,12 +39,15 @@ class EmployeeController extends AbstractController
     try {
       $this->entityManager->persist($employee);
       $this->entityManager->flush();
-      return $this->json([
-        "employee" => $employee->toArray(),
-      ]);
     } catch (Exception $exception) {
-      //error
+      return $this->json([
+        "message" => ["text" => ["Что-то пошло не так:("], "level" => "error"],
+      ]);
     }
+    return $this->json([
+      "employee" => $employee->toArray(),
+      "message" => ["text" => ["Сотрудник был создан!!!", "Сотрудник: " . $content -> fname, $content -> lname, $content -> position], "level" => "success"],
+    ]);
   }
   
   
@@ -65,19 +67,19 @@ class EmployeeController extends AbstractController
   #[Route('/update/{id}', name: 'api_employee_update', methods: "PUT")]
   public function update(Request $request, Employee $employee): Response
   {
-    $content = json_decode($request -> getContent());
+    $content = json_decode($request->getContent());
     
-    $employee -> setFname($content -> fname);
-    $employee -> setLname($content -> lname);
-    $employee -> setPosition($content -> position);
-  
+    $employee->setFname($content->fname);
+    $employee->setLname($content->lname);
+    $employee->setPosition($content->position);
+    
     try {
-      $this -> entityManager -> flush();
+      $this->entityManager->flush();
     } catch (Exception $exception) {
       //error
     }
     
-    return $this -> json([
+    return $this->json([
       "message" => "Сотрудник был обновлён",
     ]);
     
@@ -88,13 +90,13 @@ class EmployeeController extends AbstractController
   public function delete(Employee $employee): Response
   {
     try {
-      $this -> entityManager -> remove($employee);
-      $this -> entityManager -> flush();
+      $this->entityManager->remove($employee);
+      $this->entityManager->flush();
     } catch (Exception $exception) {
       //error
     }
     
-    return $this -> json([
+    return $this->json([
       "message" => "Сотрудник удалён!!!",
     ]);
   }
