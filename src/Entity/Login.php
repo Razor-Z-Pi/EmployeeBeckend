@@ -77,4 +77,15 @@ class Login
 
         return $this;
     }
+
+    public function toArray()
+    {
+        return [
+            "id" => $this -> id,
+            "Name" => $this -> name,
+            "Password" => $this -> password,
+            "Role" => $this -> role,
+            "id_Employee" => $this -> id_employee,
+        ];
+    }
 }
