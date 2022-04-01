@@ -93,7 +93,9 @@ class EmployeeController extends AbstractController
       $this->entityManager->remove($employee);
       $this->entityManager->flush();
     } catch (Exception $exception) {
-      //error
+        return $this->json([
+            "message" => ["text" => ["Что-то пошло не так:("], "level" => "error"],
+        ]);
     }
     
     return $this->json([

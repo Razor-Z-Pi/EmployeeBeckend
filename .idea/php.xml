@@ -105,6 +105,7 @@
       <path value="$PROJECT_DIR$/vendor/limenius/react-renderer" />
       <path value="$PROJECT_DIR$/vendor/limenius/react-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/doctrine-messenger" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
